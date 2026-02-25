@@ -10,7 +10,7 @@
 ---
 ## 🖼️ Wallpapers
 
-> I maintain a dedicated Tokyo Night wallpaper collection with 200+ wallpapers over at:
+> I maintain a dedicated Tokyo Night wallpaper collection with 60+ wallpapers over at:
 > **[tokyonight-wallpapers](https://github.com/atraxsrc/tokyonight-wallpapers)** ⭐
 
 ---
