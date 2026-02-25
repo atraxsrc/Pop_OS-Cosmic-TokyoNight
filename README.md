@@ -54,7 +54,7 @@
 
 ## ⚡ Scripts
 
-### `update.sh`
+### `update_system.sh`
 
 A full system update script with Tokyo Night colored output. Handles:
 
@@ -65,8 +65,8 @@ A full system update script with Tokyo Night colored output. Handles:
 
 ```bash
 # Make executable and run
-chmod +x scripts/update.sh
-sudo ./scripts/update.sh
+chmod +x scripts/update_system.sh
+sudo ./scripts/update_system.sh
 ```
 
 ---
