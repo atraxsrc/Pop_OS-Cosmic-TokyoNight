@@ -11,7 +11,7 @@
 
 ## 📸 Screenshots
 
-*<img width="3840" height="2160" alt="miage" src="https://github.com/user-attachments/assets/374fce9f-c470-4487-a4d6-e59749434398" />
+<img width="3840" height="2160" alt="miage" src="https://github.com/user-attachments/assets/374fce9f-c470-4487-a4d6-e59749434398" />
 
 
 ---
