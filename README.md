@@ -35,15 +35,19 @@
 ## 🗂️ Repo Structure
 
 ```
-Pop_OS-Cosmic-TokyoNight/
+├── dotfiles              
+|   ├── .zshrc            # Zsh configuration
+├── fastfetch
+│   ├── config.jsonc      # Fastfetch configuration
+│   ├── cosmicTN.txt
+│   └── cosmic.txt
+├── LICENSE
 ├── README.md
-├── scripts/
-│   └── update.sh          # System update script (nala + flatpak)
-├── fastfetch/
-│   └── config.jsonc       # Fastfetch configuration
-├── dotfiles/
-│   └── .zshrc             # Zsh configuration
-└── screenshots/           # Desktop screenshots
+├── screenshots           # Desktop screenshots
+│   ├── cosmicfinal.png
+│   └── miage.png
+└── scripts
+    └── update_system.sh  # System update script (nala + flatpak + snap)
 ```
 
 ---
