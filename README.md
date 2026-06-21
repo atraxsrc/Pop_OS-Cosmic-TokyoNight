@@ -1,66 +1,61 @@
+<div align="center">
+
 # Pop!_OS · COSMIC · Tokyo Night
 
-> My personal desktop setup running **Pop!_OS 24.04 LTS** with the **COSMIC DE** and **Tokyo Night Dark** theming throughout — terminal, fastfetch, scripts, dotfiles, and wallpapers all in one place.
+My personal desktop setup running Pop!_OS 24.04 LTS with the COSMIC DE and Tokyo Night Dark theming throughout: terminal, fastfetch, scripts, dotfiles, and wallpapers all in one place.
 
 ![Pop!_OS](https://img.shields.io/badge/Pop!_OS-24.04_LTS-48B9C7?style=for-the-badge&logo=popos&logoColor=white)
 ![COSMIC](https://img.shields.io/badge/COSMIC-1.0.0-ff6b35?style=for-the-badge)
 ![Tokyo Night](https://img.shields.io/badge/Theme-Tokyo_Night_Dark-7aa2f7?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-9ece6a?style=for-the-badge)
 
----
-## 🖼️ Wallpapers
-
-> I maintain a dedicated Tokyo Night wallpaper collection with 60+ wallpapers over at:
-> **[tokyonight-wallpapers](https://github.com/atraxsrc/tokyonight-wallpapers)** ⭐
-
----
-## 📸 Screenshots
-
-<img width="3840" height="2160" alt="miage" src="https://github.com/user-attachments/assets/374fce9f-c470-4487-a4d6-e59749434398" />
-
-
----
-## 🖥️ Hardware
-
-| Component | Spec |
-|-----------|------|
-| **Machine** | Lenovo ThinkPad (21CKCTO1WW) |
-| **CPU** | AMD Ryzen 7 PRO 6850U |
-| **GPU** | AMD Radeon 680M (integrated) |
-| **RAM** | 30.12 GiB |
-| **Storage** | 906.94 GiB |
+</div>
 
 ---
 
-## 🗂️ Repo Structure
+## Screenshots
+
+<img width="3840" height="2160" alt="desktop" src="https://github.com/user-attachments/assets/374fce9f-c470-4487-a4d6-e59749434398" />
+
+---
+
+## Wallpapers
+
+A dedicated Tokyo Night wallpaper collection with 60+ wallpapers lives over at
+[tokyonight-wallpapers](https://github.com/atraxsrc/tokyonight-wallpapers).
+
+---
+
+## Repo Structure
 
 ```
-├── dotfiles              
-|   ├── .zshrc            # Zsh configuration
+.
+├── dotfiles
+│   └── .zshrc            # Zsh configuration
 ├── fastfetch
-│   ├── config.jsonc      # Fastfetch configuration
-│   ├── cosmicTN.txt
-│   └── cosmic.txt
-├── LICENSE
-├── README.md
+│   ├── config.jsonc      # Fastfetch configuration
+│   ├── cosmicTN.txt
+│   └── cosmic.txt
 ├── screenshots           # Desktop screenshots
-│   ├── cosmicfinal.png
-│   └── miage.png
-└── scripts
-    └── update_system.sh  # System update script (nala + flatpak + snap)
+│   ├── cosmicfinal.png
+│   └── miage.png
+├── scripts
+│   └── update_system.sh  # System update script (nala + flatpak + snap)
+├── LICENSE
+└── README.md
 ```
 
 ---
 
-## ⚡ Scripts
+## Scripts
 
 ### `update_system.sh`
 
 A full system update script with Tokyo Night colored output. Handles:
 
-- **nala** package updates (with apt fallback)
-- **Flatpak** updates
-- **Snap** updates (if installed)
+- nala package updates (with apt fallback)
+- Flatpak updates
+- Snap updates (if installed)
 - Runtime timer and status indicators
 
 ```bash
@@ -71,9 +66,9 @@ sudo ./scripts/update_system.sh
 
 ---
 
-## 🎨 Theme
+## Theme
 
-Everything is themed around **Tokyo Night Dark** — a low-contrast, dark blue palette originally from the VSCode theme by the same name.
+Everything is themed around Tokyo Night Dark, a low-contrast, dark blue palette originally from the VSCode theme by the same name.
 
 | Role | Color | Hex |
 |------|-------|-----|
@@ -88,7 +83,7 @@ Everything is themed around **Tokyo Night Dark** — a low-contrast, dark blue p
 
 ---
 
-## 🚀 Setup
+## Setup
 
 ### Prerequisites
 
@@ -105,7 +100,7 @@ sudo nala update && sudo nala install fastfetch
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/Pop_OS-Cosmic-TokyoNight.git
+git clone https://github.com/atraxsrc/Pop_OS-Cosmic-TokyoNight.git
 cd Pop_OS-Cosmic-TokyoNight
 
 # Copy zshrc
@@ -115,9 +110,10 @@ cp dotfiles/.zshrc ~/.zshrc
 mkdir -p ~/.config/fastfetch
 cp fastfetch/config.jsonc ~/.config/fastfetch/
 ```
+
 ---
 
-## 🛠️ Stack
+## Stack
 
 | Tool | What it does |
 |------|-------------|
@@ -130,11 +126,9 @@ cp fastfetch/config.jsonc ~/.config/fastfetch/
 
 ---
 
-## 📄 License
+## License
 
-MIT — do whatever you want with it. Attribution appreciated but not required.
-
----
+MIT. Do whatever you want with it. Attribution appreciated but not required.
 
 <div align="center">
   <sub>Built on Pop!_OS 24.04 · COSMIC 1.0.0 · Tokyo Night Dark</sub>
