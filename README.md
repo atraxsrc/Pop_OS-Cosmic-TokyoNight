@@ -1,4 +1,4 @@
-# 🌃 Pop!_OS · COSMIC · Tokyo Night
+# Pop!_OS · COSMIC · Tokyo Night
 
 > My personal desktop setup running **Pop!_OS 24.04 LTS** with the **COSMIC DE** and **Tokyo Night Dark** theming throughout — terminal, fastfetch, scripts, dotfiles, and wallpapers all in one place.
 
