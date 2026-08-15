@@ -68,7 +68,7 @@ update_system() {
         print_info "Package manager: nala"
         sudo nala update
         sudo nala upgrade --full -y "${PHASED_OPT[@]}"
-        sudo nala autoremove -y
+#        sudo nala autoremove -y
         sudo nala clean
         print_success "Nala system update complete"
 
@@ -76,7 +76,7 @@ update_system() {
         print_info "Package manager: apt (nala not found)"
         sudo apt update
         sudo apt full-upgrade -y "${PHASED_OPT[@]}"
-        sudo apt autoremove -y
+#        sudo apt autoremove -y
         sudo apt autoclean
         print_success "APT system update complete"
 
@@ -88,27 +88,16 @@ update_system() {
 
 update_flatpak() {
     print_header "Flatpak"
-
     if ! command_exists flatpak; then
         print_skip "Flatpak not installed — skipping"
         return 0
     fi
 
     print_info "Running flatpak update..."
-    local output exit_code
-    output=$(flatpak update -y 2>&1) || true
-    exit_code=$?
-    while IFS= read -r line; do
-        echo -e "  ${DIM}${line}${RESET}"
-    done <<< "$output"
-
-    if echo "$output" | grep -q "Nothing to do"; then
-        print_success "All Flatpaks are already up to date"
-    elif [ "$exit_code" -eq 0 ]; then
+    if flatpak update -y; then
         print_success "Flatpak updates applied"
-        print_dim "(EOL runtime warnings above are normal)"
     else
-        print_warn "Flatpak finished with warnings — see output above"
+        print_warn "Flatpak finished with some warnings"
     fi
 }
 
@@ -171,7 +160,7 @@ main() {
     }
 
     update_flatpak
-    update_snap
+#    update_snap
 
     end_time=$(date +%s)
     duration=$((end_time - start_time))
