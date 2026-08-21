@@ -123,26 +123,72 @@ update_snap() {
     fi
 }
 
+# ── Logo ───────────────────────────────────────────────────────────────────────
+
 # COSMIC logo accent colors — global scope so $'...' escapes work correctly
 TEAL=$'\033[38;2;78;205;196m'   # #4ecdc4  COSMIC teal
 ORG=$'\033[38;2;255;107;53m'    # #ff6b35  COSMIC orange
 
-# ── Logo ───────────────────────────────────────────────────────────────────────
+# Banner rows, ANSI Shadow figlet font. All 46 columns wide; keep them that way
+# or the gradient below will drift out of alignment with the letterforms.
+LOGO_ROWS=(
+    ' ██████╗ ██╗  ██╗██████╗ ███████╗██╗   ██╗ ██╗'
+    '██╔═████╗╚██╗██╔╝██╔══██╗██╔════╝██║   ██║███║'
+    '██║██╔██║ ╚███╔╝ ██║  ██║█████╗  ██║   ██║╚██║'
+    '████╔╝██║ ██╔██╗ ██║  ██║██╔══╝  ╚██╗ ██╔╝ ██║'
+    '╚██████╔╝██╔╝ ██╗██████╔╝███████╗ ╚████╔╝  ██║'
+    ' ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝  ╚═══╝   ╚═╝'
+)
 
+# Per-column colours for the banner: a blue → green ramp interpolated in Oklab
+# rather than in sRGB. A naive RGB blend between #7aa2f7 and #9ece6a dips through
+# a desaturated grey at the midpoint — which lands right under "De", the most
+# visible part of the word. Oklab is perceptually uniform, so the ramp stays
+# bright the whole way across and passes through cyan-teal instead.
+#
+# Precomputed at author time: doing cube roots in bash for 276 characters on
+# every run would be silly. To retune, regenerate rather than hand-editing.
+# One entry per column, 46 total.
+LOGO_GRAD=(
+    "122;162;247" "122;163;244" "123;165;242" "123;166;239" "124;167;237" "125;168;234"
+    "125;170;231" "126;171;229" "126;172;226" "127;173;223" "128;174;221" "128;175;218"
+    "129;177;215" "130;178;213" "130;179;210" "131;180;207" "132;181;204" "132;182;201"
+    "133;183;199" "134;184;196" "135;185;193" "136;186;190" "136;187;187" "137;188;184"
+    "138;189;181" "139;190;178" "140;191;175" "141;191;172" "141;192;169" "142;193;166"
+    "143;194;163" "144;195;159" "145;196;156" "146;197;153" "147;197;149" "148;198;146"
+    "149;199;142" "150;200;139" "151;201;135" "152;201;131" "153;202;127" "154;203;123"
+    "155;204;119" "156;205;115" "157;205;111" "158;206;106"
+)
+
+# Draw the banner one character at a time, colouring by column index so the
+# gradient runs horizontally across the whole word. Every glyph gets the ramp,
+# including the box-drawing bevel characters (╔ ═ ╗ ║ ╚ ╝) — colouring those
+# separately puts stray marks inside the 0, the D bowl and the e, which reads
+# as noise sitting on top of the letters rather than as depth.
 print_logo() {
-    local P="${CYAN}${BOLD}"
-    local R="${RESET}"
+    # figlet rows are multibyte; force a UTF-8 locale so ${row:i:1} steps by
+    # character instead of by byte. Local to this function only.
+    local LC_ALL=C.UTF-8
+    local row ch out i
 
     echo
-    printf "%s  ██╗      █████╗  ██████╗  ███████╗%s\n" "$P" "$R"
-    printf "%s  ██║     ██╔══██╗ ██╔══██╗ ██╔════╝%s\n" "$P" "$R"
-    printf "%s  ██║     ███████║ ██████╔╝ ███████╗%s\n"  "$P" "$R"
-    printf "%s  ██║     ██╔══██║ ██╔══██╗ ╚════██║%s\n" "$P" "$R"
-    printf "%s  ███████╗██║  ██║ ██████╔╝ ███████║%s\n"  "$P" "$R"
-    printf "%s  ╚══════╝╚═╝  ╚═╝ ╚═════╝  ╚══════╝%s\n" "$P" "$R"
+    for row in "${LOGO_ROWS[@]}"; do
+        out=""
+        for (( i = 0; i < ${#row}; i++ )); do
+            ch="${row:i:1}"
+            if [ "$ch" = " " ]; then
+                out+=" "
+            else
+                out+=$'\033[1;38;2;'"${LOGO_GRAD[i]}"$'m'"$ch"
+            fi
+        done
+        printf '  %s%s\n' "$out" "$RESET"
+    done
+
     echo
-    printf "  ${TEAL}━━━━━━━━━━━${ORG}━━━━━━━━━━━${RESET}${DIM}  Pop!_OS · COSMIC DE · System Update${RESET}\n"
-    printf "  ${DIM}  $(date '+%A %d %B %Y  %H:%M:%S')${RESET}\n"
+    printf "  ${TEAL}━━━━━━━━━━━━━━━━━━━━━━━${ORG}━━━━━━━━━━━━━━━━━━━━━━━${RESET}\n"
+    printf "  ${DIM}  Pop!_OS · COSMIC DE · System Update${RESET}\n"
+    printf "  ${DIM}  %s${RESET}\n" "$(date '+%A %d %B %Y  %H:%M:%S')"
     echo
 }
 
