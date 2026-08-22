@@ -1,0 +1,66 @@
+{
+  "manifest_version": 2,
+  "name": "Cosmic Night",
+  "version": "1.2",
+  "description": "True-black theme drawn from the COSMIC artwork: blue chrome, lime focus, red alerts.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{43358c24-2e02-421a-89b3-8fc59c0f66be}"
+    }
+  },
+  "icons": {
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "64": "icons/icon-64.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+  "theme": {
+    "colors": {
+      "frame": "#000000",
+      "frame_inactive": "#000000",
+      "toolbar": "#0d0f16",
+      "tab_selected": "#171b23",
+      "toolbar_field": "#05060a",
+      "toolbar_field_focus": "#05060a",
+      "popup": "#171b23",
+      "sidebar": "#05060a",
+      "ntp_background": "#000000",
+      "ntp_card_background": "#171b23",
+      "tab_text": "#c3d0f5",
+      "tab_background_text": "#7d8fae",
+      "toolbar_text": "#c3d0f5",
+      "bookmark_text": "#c3d0f5",
+      "toolbar_field_text": "#c3d0f5",
+      "toolbar_field_text_focus": "#ffffff",
+      "popup_text": "#c3d0f5",
+      "sidebar_text": "#c3d0f5",
+      "ntp_text": "#c3d0f5",
+      "popup_action_color": "#7d8fae",
+      "toolbar_field_border": "#79a3f7",
+      "icons": "#79a3f7",
+      "toolbar_field_highlight": "#79a3f7",
+      "toolbar_field_highlight_text": "#000000",
+      "popup_highlight": "#79a3f7",
+      "popup_highlight_text": "#000000",
+      "button_background_active": "#6a85bc",
+      "toolbar_field_border_focus": "#a8ec61",
+      "tab_line": "#a8ec61",
+      "sidebar_highlight": "#a8ec61",
+      "sidebar_highlight_text": "#000000",
+      "tab_loading": "#e04c5d",
+      "icons_attention": "#e04c5d",
+      "toolbar_top_separator": "#000000",
+      "popup_border": "#3a3946",
+      "sidebar_border": "#3a3946",
+      "toolbar_bottom_separator": "#3a3946",
+      "toolbar_vertical_separator": "#3a3946",
+      "tab_background_separator": "#3a3946",
+      "button_background_hover": "#1f2740"
+    },
+    "properties": {
+      "color_scheme": "dark",
+      "content_color_scheme": "dark"
+    }
+  }
+}
