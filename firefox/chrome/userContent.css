@@ -1,0 +1,37 @@
+/* ==========================================================================
+   Cosmic Night - userContent.css  v2  (variables only)
+
+   v1 set border / background / border-radius directly on .tile,
+   .top-site-button and .search-inner-wrapper. Those are nested elements, so
+   the borders stacked and the added box model stretched the tiles and
+   overflowed the search bar.
+
+   This version changes COLOR ONLY, through the variables Firefox already
+   uses for its own layout. Nothing here can affect size or position.
+
+   Install:  chrome/userContent.css   (same pref + restart as userChrome.css)
+   ========================================================================== */
+
+@-moz-document url-prefix("about:newtab"),
+               url-prefix("about:home"),
+               url-prefix("about:privatebrowsing") {
+
+  :root {
+    /* the purple accent - this is what you were seeing */
+    --newtab-primary-action-background: #79a3f7 !important;
+    --newtab-primary-action-background-dimmed: rgba(121, 163, 247, 0.25) !important;
+
+    /* focus rings on the search box and tiles */
+    --newtab-focus-border: #79a3f7 !important;
+    --newtab-focus-outline: #79a3f7 !important;
+    --newtab-textbox-focus-color: #79a3f7 !important;
+
+    /* generic in-content accent, used for links and controls */
+    --in-content-accent-color: #79a3f7 !important;
+    --in-content-accent-color-active: #a8ec61 !important;
+    --in-content-focus-outline-color: #79a3f7 !important;
+
+    --link-color: #79a3f7 !important;
+    --link-color-hover: #a8ec61 !important;
+  }
+}

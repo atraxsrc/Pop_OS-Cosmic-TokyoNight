@@ -1,0 +1,112 @@
+/* ==========================================================================
+   Cosmic Night - userChrome.css  v4  (minimal + scoped)
+
+   v3 set --panel-* / --arrowpanel-* on :root with !important. Those variables
+   are used across the whole chrome, not just panels, so that leaked into the
+   toolbar and blanked the URL bar. Everything here is scoped to the element
+   it affects. No :root overrides.
+
+   Install:
+     1. about:config -> toolkit.legacyUserProfileCustomizations.stylesheets = true
+     2. about:support -> Profile Directory -> Open Directory
+     3. put this file at  chrome/userChrome.css
+     4. FULL restart
+   ========================================================================== */
+
+/* ---------- rounded corners: URL bar + search ---------- */
+#urlbar-background,
+#searchbar {
+  border-radius: 10px !important;
+}
+
+#urlbar[focused="true"] > #urlbar-background {
+  box-shadow: 0 0 10px -3px #a8ec61 !important;
+}
+
+/* ---------- rounded corners: tabs ---------- */
+.tabbrowser-tab .tab-background {
+  border-radius: 10px !important;      /* all four corners */
+  margin-inline: 2px !important;
+  margin-block: 3px !important;        /* lets the bottom corners show */
+}
+
+/* ---------- rounded corners: urlbar dropdown ---------- */
+.urlbarView-row {
+  border-radius: 7px !important;
+  margin-inline: 3px !important;
+}
+
+/* ---------- rounded corners: toolbar buttons ---------- */
+toolbarbutton .toolbarbutton-icon {
+  border-radius: 7px !important;
+}
+
+/* ==========================================================================
+   MENU COLORS - scoped to the popups only.
+   Setting these on the popup element (not :root) keeps them out of the
+   toolbar's cascade.
+   ========================================================================== */
+
+#appMenu-popup,
+#widget-overflow,
+#customizationui-widget-multiview,
+menupopup {
+  --panel-background: #171b23 !important;
+  --panel-color: #c3d0f5 !important;
+  --panel-border-color: #3a3946 !important;
+  --panel-border-radius: 10px !important;
+  --panel-separator-color: #3a3946 !important;
+  --panel-item-hover-bgcolor: rgba(121, 163, 247, 0.16) !important;
+  --panel-item-active-bgcolor: rgba(121, 163, 247, 0.26) !important;
+
+  --arrowpanel-background: #171b23 !important;
+  --arrowpanel-color: #c3d0f5 !important;
+  --arrowpanel-border-color: #3a3946 !important;
+  --arrowpanel-dimmed: rgba(121, 163, 247, 0.16) !important;
+  --arrowpanel-dimmed-further: rgba(121, 163, 247, 0.26) !important;
+}
+
+/* rounded menu rows */
+#appMenu-popup .subviewbutton,
+#widget-overflow .subviewbutton,
+menupopup menuitem,
+menupopup menu {
+  border-radius: 7px !important;
+  margin-inline: 4px !important;
+}
+
+/* hover: subtle blue wash + outline */
+#appMenu-popup .subviewbutton:not([disabled]):hover,
+#widget-overflow .subviewbutton:not([disabled]):hover,
+menupopup menuitem:not([disabled]):hover,
+menupopup menu:not([disabled]):hover {
+  background-color: rgba(121, 163, 247, 0.16) !important;
+  box-shadow: inset 0 0 0 1px #79a3f7 !important;
+}
+
+/* separators */
+#appMenu-popup toolbarseparator,
+menupopup menuseparator {
+  border-top: 1px solid #3a3946 !important;
+}
+
+/* ---------- menu borders ----------
+   #appMenu-popup and friends render their shell inside shadow DOM, so a plain
+   `border` on the element does nothing. ::part(content) is the supported hook.
+   Scoped to named popups only. */
+#appMenu-popup::part(content),
+#widget-overflow::part(content),
+#customizationui-widget-multiview::part(content),
+#protections-popup::part(content),
+#identity-popup::part(content) {
+  border: 1px solid #3a3946 !important;
+  border-radius: 10px !important;
+}
+
+/* Context menus ARE shadow-based too. Styling the element directly puts a
+   rounded border on the inner box while the outer shell stays square, so both
+   edges show at once. ::part(content) is the shell itself. */
+menupopup::part(content) {
+  border: 1px solid #3a3946 !important;
+  border-radius: 10px !important;
+}
