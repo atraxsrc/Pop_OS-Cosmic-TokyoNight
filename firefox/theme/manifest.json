@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Cosmic Night",
-  "version": "1.2",
+  "version": "1.3",
   "description": "True-black theme drawn from the COSMIC artwork: blue chrome, lime focus, red alerts.",
   "browser_specific_settings": {
     "gecko": {
@@ -37,7 +37,7 @@
       "sidebar_text": "#c3d0f5",
       "ntp_text": "#c3d0f5",
       "popup_action_color": "#7d8fae",
-      "toolbar_field_border": "#79a3f7",
+      "toolbar_field_border": "#a8ec61",
       "icons": "#79a3f7",
       "toolbar_field_highlight": "#79a3f7",
       "toolbar_field_highlight_text": "#000000",
