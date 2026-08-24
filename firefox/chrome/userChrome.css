@@ -17,6 +17,7 @@
 #urlbar-background,
 #searchbar {
   border-radius: 10px !important;
+  border-color: #a8ec61 !important;   /* lime in both states */
 }
 
 #urlbar[focused="true"] > #urlbar-background {
