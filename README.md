@@ -16,9 +16,10 @@ My personal desktop setup running Pop!_OS 24.04 LTS with the COSMIC DE and Tokyo
 
 ## Screenshots
 
-<img src="screenshots/git1.png" width="100%" alt="desktop" />
 <img src="screenshots/git2.png" width="100%" alt="desktop" />
 <img src="screenshots/firefox.png" width="100%" alt="desktop" />
+<img src="screenshots/git1.png" width="100%" alt="desktop" />
+
 ---
 
 ## Wallpapers
