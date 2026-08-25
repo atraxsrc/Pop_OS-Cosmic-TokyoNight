@@ -100,7 +100,7 @@ menupopup menuseparator {
 #customizationui-widget-multiview::part(content),
 #protections-popup::part(content),
 #identity-popup::part(content) {
-  border: 1px solid #3a3946 !important;
+  border: 4px solid #ff00ff !important;   /* DIAGNOSTIC - impossible to miss */
   border-radius: 10px !important;
 }
 
@@ -108,6 +108,6 @@ menupopup menuseparator {
    rounded border on the inner box while the outer shell stays square, so both
    edges show at once. ::part(content) is the shell itself. */
 menupopup::part(content) {
-  border: 1px solid #3a3946 !important;
+  border: 1px solid #a8ec61 !important;
   border-radius: 10px !important;
 }
