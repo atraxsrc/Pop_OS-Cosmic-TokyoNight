@@ -43,6 +43,8 @@ A dedicated Tokyo Night wallpaper collection with 60+ wallpapers lives over at
 
 ```
 .
+├── cosmic
+│   └── TokyoNight.ron    # COSMIC Appearance import
 ├── dotfiles
 │   └── .zshrc            # Zsh configuration
 ├── fastfetch
@@ -67,6 +69,19 @@ A dedicated Tokyo Night wallpaper collection with 60+ wallpapers lives over at
 ├── LICENSE
 └── README.md
 ```
+
+---
+
+## COSMIC Desktop
+
+Settings → Desktop → Appearance → **Dark** → **Import** → `cosmic/TokyoNight.ron`
+
+Sets the Tokyo Night background (`#1a1b26`), container (`#24283b`), accent
+blue (`#7aa2f7`) and text tint. The rest of the palette is COSMIC's default
+dark. Export from Appearance if you tweak it so you do not lose the changes.
+
+There is no terminal scheme file in this repo; pick a dark scheme in COSMIC
+Terminal → View → Settings → Appearance.
 
 ---
 
@@ -181,6 +196,9 @@ cp dotfiles/.zshrc ~/.zshrc
 # Copy fastfetch config
 mkdir -p ~/.config/fastfetch
 cp fastfetch/config.jsonc ~/.config/fastfetch/
+
+# COSMIC theme
+# Settings → Appearance → Dark → Import cosmic/TokyoNight.ron
 
 # Firefox stylesheets (optional)
 ./firefox/install.sh
