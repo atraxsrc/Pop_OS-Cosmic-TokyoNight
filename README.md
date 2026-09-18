@@ -22,6 +22,16 @@ My personal desktop setup running Pop!_OS 24.04 LTS with the COSMIC DE and Tokyo
 
 ---
 
+## Sibling rices
+
+Same machine and COSMIC desktop, different palettes. Both reuse this repo's
+dotfiles and fastfetch config.
+
+- [Pop_OS-Cosmic-Monochrome](https://github.com/atraxsrc/Pop_OS-Cosmic-Monochrome): gray, no hue
+- [Pop_OS-Cosmic-DarkGold](https://github.com/atraxsrc/Pop_OS-Cosmic-DarkGold): Harbor Dark gold, with a light variant
+
+---
+
 ## Wallpapers
 
 A dedicated Tokyo Night wallpaper collection with 60+ wallpapers lives over at
@@ -49,10 +59,11 @@ A dedicated Tokyo Night wallpaper collection with 60+ wallpapers lives over at
 │   ├── install.sh        # Copies chrome/ into the default profile
 │   └── README.md
 ├── screenshots           # Desktop screenshots
-│   ├── cosmicfinal.png
-│   └── miage.png
+│   ├── firefox.png
+│   ├── git1.png
+│   └── git2.png
 ├── scripts
-│   └── update_system.sh  # System update script (nala + flatpak + snap)
+│   └── update_system.sh  # System update script (nala + flatpak)
 ├── LICENSE
 └── README.md
 ```
@@ -67,14 +78,18 @@ A full system update script with Tokyo Night colored output. Handles:
 
 - nala package updates (with apt fallback)
 - Flatpak updates
-- Snap updates (if installed)
+- Snap updates: the function is included but off by default; uncomment
+  `update_snap` in `main` to enable it
 - Runtime timer and status indicators
 
 ```bash
-# Make executable and run
+# Make executable and run (it calls sudo itself where needed)
 chmod +x scripts/update_system.sh
-sudo ./scripts/update_system.sh
+./scripts/update_system.sh
 ```
+
+Don't run the whole script with `sudo`: `flatpak update` would then only
+update system-wide installs and skip your per-user Flatpaks.
 
 ---
 
