@@ -34,8 +34,10 @@ dotfiles and fastfetch config.
 
 ## Wallpapers
 
-A dedicated Tokyo Night wallpaper collection with 60+ wallpapers lives over at
-[tokyonight-wallpapers](https://github.com/atraxsrc/tokyonight-wallpapers).
+Wallpapers live in [cool-wallpapers](https://github.com/atraxsrc/cool-wallpapers),
+a collection grouped by palette. The ones for this rice are in
+[`tokyonight/`](https://github.com/atraxsrc/cool-wallpapers/tree/main/tokyonight)
+and [`cosmic/`](https://github.com/atraxsrc/cool-wallpapers/tree/main/cosmic).
 
 ---
 
@@ -111,7 +113,8 @@ update system-wide installs and skip your per-user Flatpaks.
 ## Firefox
 
 **Cosmic Night** — a true-black Firefox theme whose palette is sampled from the
-COSMIC wallpaper rather than taken from Tokyo Night, so it runs cooler and
+COSMIC wallpaper ([`cosmic-astronaut-firefox`](https://github.com/atraxsrc/cool-wallpapers/blob/main/cosmic/cosmic-astronaut-firefox-7168x4032.png))
+rather than taken from Tokyo Night, so it runs cooler and
 darker than the rest of the rice. Blue chrome, a lime focus accent, red for
 alerts.
 
