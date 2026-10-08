@@ -2,7 +2,7 @@
 
 # Pop!_OS · COSMIC · Tokyo Night
 
-My personal desktop setup running Pop!_OS 24.04 LTS with the COSMIC DE and Tokyo Night Dark theming throughout: terminal, fastfetch, scripts, dotfiles, Firefox, and wallpapers all in one place.
+My personal desktop setup running Pop!_OS 24.04 LTS with the COSMIC DE and Tokyo Night Dark theming throughout: terminal, shell, fastfetch, btop, scripts, Firefox, and wallpapers all in one place.
 
 ![Pop!_OS](https://img.shields.io/badge/Pop!_OS-24.04_LTS-48B9C7?style=for-the-badge&logo=popos&logoColor=white)
 ![COSMIC](https://img.shields.io/badge/COSMIC-1.0.0-ff6b35?style=for-the-badge)
@@ -22,16 +22,6 @@ My personal desktop setup running Pop!_OS 24.04 LTS with the COSMIC DE and Tokyo
 
 ---
 
-## Sibling rices
-
-Same machine and COSMIC desktop, different palettes. Both reuse this repo's
-dotfiles and fastfetch config.
-
-- [Pop_OS-Cosmic-Monochrome](https://github.com/atraxsrc/Pop_OS-Cosmic-Monochrome): gray, no hue
-- [Pop_OS-Cosmic-DarkGold](https://github.com/atraxsrc/Pop_OS-Cosmic-DarkGold): Harbor Dark gold, with a light variant
-
----
-
 ## Wallpapers
 
 Wallpapers live in [cool-wallpapers](https://github.com/atraxsrc/cool-wallpapers),
@@ -45,14 +35,19 @@ and [`cosmic/`](https://github.com/atraxsrc/cool-wallpapers/tree/main/cosmic).
 
 ```
 .
+├── btop
+│   └── TokyoNight.theme  # btop colour theme
 ├── cosmic
-│   └── TokyoNight.ron    # COSMIC Appearance import
-├── dotfiles
-│   └── .zshrc            # Zsh configuration
+│   ├── TokyoNight.ron    # COSMIC Appearance import
+│   ├── config/           # baseline settings: fonts, terminal look
+│   └── install.sh
+├── cosmic-term
+│   └── TokyoNight-term.ron  # COSMIC Terminal colour scheme
 ├── fastfetch
 │   ├── config.jsonc      # Fastfetch configuration
-│   ├── cosmicTN.txt
-│   └── cosmic.txt
+│   ├── cosmicTN.txt      # COSMIC logo, Tokyo Night gradient
+│   ├── cosmic.txt
+│   └── install.sh
 ├── firefox               # Cosmic Night browser theme
 │   ├── theme
 │   │   ├── manifest.json # WebExtension theme, 40 colour keys
@@ -66,8 +61,15 @@ and [`cosmic/`](https://github.com/atraxsrc/cool-wallpapers/tree/main/cosmic).
 │   ├── firefox.png
 │   ├── git1.png
 │   └── git2.png
+├── lsd
+│   ├── config.yaml       # theme: custom
+│   ├── colors.yaml       # permission / size / date / git columns
+│   └── install.sh
 ├── scripts
 │   └── update_system.sh  # System update script (nala + flatpak)
+├── zsh
+│   ├── tokyonight.zsh    # LS_COLORS, highlighting colours, aliases, starship
+│   └── install.sh
 ├── LICENSE
 └── README.md
 ```
@@ -82,8 +84,38 @@ Sets the Tokyo Night background (`#1a1b26`), container (`#24283b`), accent
 blue (`#7aa2f7`) and text tint. The rest of the palette is COSMIC's default
 dark. Export from Appearance if you tweak it so you do not lose the changes.
 
-There is no terminal scheme file in this repo; pick a dark scheme in COSMIC
-Terminal → View → Settings → Appearance.
+### Baseline settings
+
+`cosmic/config/` holds the settings that make up the look and rarely change
+(panel, dock, applets, shortcuts and icons are left out on purpose):
+
+| Where | Setting |
+|-------|---------|
+| Fonts | Interface `Maple Normal UI`, monospace `Maple Mono Normal NFM` |
+| Windows | Minimize / maximize buttons hidden, theme applied to GNOME apps |
+| Terminal | Maple Mono 15 (weights 500 / bold 800 / dim 300), 77% opacity, no header bar, Tokyo Night |
+
+Install the [Maple fonts](https://github.com/subframe7536/maple-font) and
+import the terminal scheme (below) first, then:
+
+```bash
+./cosmic/install.sh
+```
+
+It backs up each file it replaces to `*.bak` and COSMIC applies it live.
+
+---
+
+## COSMIC Terminal
+
+The desktop `.ron` does not colour ANSI text.
+
+1. COSMIC Terminal → **View → Color schemes…** (not Settings → Appearance)
+2. Dark tab → **Import** → `cosmic-term/TokyoNight-term.ron`
+3. View → Settings → Appearance → Color scheme (dark) → **Tokyo Night**
+
+If a profile is set as default, set the scheme on that profile too or the
+dropdown will look like it did nothing.
 
 ---
 
@@ -110,9 +142,69 @@ update system-wide installs and skip your per-user Flatpaks.
 
 ---
 
+## Terminal extras
+
+Need a [Nerd Font](https://www.nerdfonts.com/) in the terminal for the icons
+(Maple Mono NFM in the baseline above).
+
+### zsh
+
+`zsh/tokyonight.zsh` is the rice part of the shell only: `LS_COLORS` (also
+used by lsd for file names and by the completion menu), Tokyo Night colours
+for zsh-autosuggestions and zsh-syntax-highlighting, lsd / bat / nvim aliases
+and the starship prompt. Your own `~/.zshrc` stays private and sources it.
+
+Needs zsh + [oh-my-zsh](https://ohmyz.sh/). `install.sh` clones the two
+plugins if missing and appends one `source` line to `~/.zshrc` (backup in
+`~/.zshrc.bak`):
+
+```bash
+./zsh/install.sh
+exec zsh
+```
+
+In `~/.zshrc` set `ZSH_THEME=""` (starship draws the prompt) and
+`plugins=(git sudo zsh-autosuggestions zsh-syntax-highlighting)`.
+
+### lsd
+
+File names are coloured by `LS_COLORS` from `zsh/tokyonight.zsh`;
+`lsd/colors.yaml` colours the other columns with the nearest 256-colour
+matches (149 green, 111 blue, 179 yellow, 210 red, 141 purple, 60 comment).
+lsd 1.0.0 does not accept `#hex` there.
+
+```bash
+./lsd/install.sh
+lsd -l
+```
+
+### fastfetch
+
+COSMIC logo with a Tokyo Night gradient and Hardware / Software / Age boxes.
+`install.sh` backs up any existing `~/.config/fastfetch/config.jsonc` to
+`config.jsonc.bak`.
+
+```bash
+./fastfetch/install.sh
+fastfetch
+```
+
+### btop
+
+`btop/TokyoNight.theme`: navy background, blue titles, green → yellow → red
+meters.
+
+```bash
+mkdir -p ~/.config/btop/themes
+cp btop/TokyoNight.theme ~/.config/btop/themes/
+# btop → Esc → Options → Color theme → TokyoNight
+```
+
+---
+
 ## Firefox
 
-**Cosmic Night** — a true-black Firefox theme whose palette is sampled from the
+**Cosmic Night**: a true-black Firefox theme whose palette is sampled from the
 COSMIC wallpaper ([`cosmic-astronaut-firefox`](https://github.com/atraxsrc/cool-wallpapers/blob/main/cosmic/cosmic-astronaut-firefox-7168x4032.png))
 rather than taken from Tokyo Night, so it runs cooler and
 darker than the rest of the rice. Blue chrome, a lime focus accent, red for
@@ -123,7 +215,7 @@ alerts.
 ./firefox/install.sh
 ```
 
-Then fully restart Firefox — `userChrome.css` is only parsed at startup.
+Then fully restart Firefox: `userChrome.css` is only parsed at startup.
 
 The theme package itself is built from `firefox/theme/`:
 
@@ -186,22 +278,28 @@ sudo add-apt-repository ppa:zhangsongcui3371/fastfetch
 sudo nala update && sudo nala install fastfetch
 ```
 
-### Apply dotfiles
+### Apply
 
 ```bash
 # Clone the repo
 git clone https://github.com/atraxsrc/Pop_OS-Cosmic-TokyoNight.git
 cd Pop_OS-Cosmic-TokyoNight
 
-# Copy zshrc
-cp dotfiles/.zshrc ~/.zshrc
-
-# Copy fastfetch config
-mkdir -p ~/.config/fastfetch
-cp fastfetch/config.jsonc ~/.config/fastfetch/
-
 # COSMIC theme
 # Settings → Appearance → Dark → Import cosmic/TokyoNight.ron
+
+# terminal
+# View → Color schemes → Import cosmic-term/TokyoNight-term.ron
+
+# shell + terminal tools (see Terminal extras above)
+./zsh/install.sh
+./lsd/install.sh
+./fastfetch/install.sh
+mkdir -p ~/.config/btop/themes && cp btop/TokyoNight.theme ~/.config/btop/themes/
+
+# Maple fonts (https://github.com/subframe7536/maple-font), then
+# fonts + terminal look from cosmic/config/
+./cosmic/install.sh
 
 # Firefox stylesheets (optional)
 ./firefox/install.sh
@@ -218,7 +316,9 @@ cp fastfetch/config.jsonc ~/.config/fastfetch/
 | [Tokyo Night](https://github.com/tokyo-night/tokyo-night-vscode-theme) | Color scheme |
 | [fastfetch](https://github.com/fastfetch-cli/fastfetch) | System info fetcher |
 | [nala](https://gitlab.com/volian/nala) | Better apt frontend |
-| [zsh](https://www.zsh.org/) | Shell |
+| [zsh](https://www.zsh.org/) + [oh-my-zsh](https://ohmyz.sh/) | Shell |
+| [lsd](https://github.com/lsd-rs/lsd) | `ls` with icons and colours |
+| [btop](https://github.com/aristocratos/btop) | Resource monitor |
 | [Firefox](https://www.mozilla.org/firefox/) | Browser, themed with Cosmic Night |
 
 ---
