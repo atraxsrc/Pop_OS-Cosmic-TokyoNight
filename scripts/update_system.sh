@@ -10,16 +10,16 @@ set -eo pipefail
 #  red:     #f7768e   comment: #565f89
 # ─────────────────────────────────────────────
 
-# Tokyo Night Dark — using $'...' so escape bytes are stored at assignment time
+# Tokyo Night Dark - using $'...' so escape bytes are stored at assignment time
 # and work correctly with both echo -e and printf "%s"
-CYAN=$'\033[38;2;125;207;255m'    # #7dcfff  – section headers
-BLUE=$'\033[38;2;122;162;247m'    # #7aa2f7  – info / commands
-PURPLE=$'\033[38;2;187;154;247m'  # #bb9af7  – highlights
-GREEN=$'\033[38;2;158;206;106m'   # #9ece6a  – success
-YELLOW=$'\033[38;2;224;175;104m'  # #e0af68  – warnings
-ORANGE=$'\033[38;2;255;158;100m'  # #ff9e64  – skipped
-RED=$'\033[38;2;247;118;142m'     # #f7768e  – errors
-DIM=$'\033[38;2;86;95;137m'       # #565f89  – comments / dim text
+CYAN=$'\033[38;2;125;207;255m'    # #7dcfff  - section headers
+BLUE=$'\033[38;2;122;162;247m'    # #7aa2f7  - info / commands
+PURPLE=$'\033[38;2;187;154;247m'  # #bb9af7  - highlights
+GREEN=$'\033[38;2;158;206;106m'   # #9ece6a  - success
+YELLOW=$'\033[38;2;224;175;104m'  # #e0af68  - warnings
+ORANGE=$'\033[38;2;255;158;100m'  # #ff9e64  - skipped
+RED=$'\033[38;2;247;118;142m'     # #f7768e  - errors
+DIM=$'\033[38;2;86;95;137m'       # #565f89  - comments / dim text
 BOLD=$'\033[1m'
 RESET=$'\033[0m'
 
@@ -42,7 +42,7 @@ command_exists() { command -v "$1" >/dev/null 2>&1; }
 # ── Config ─────────────────────────────────────────────────────────────────────
 
 # Phased updates: Ubuntu staggers non-security updates so a bad one only hits a
-# fraction of machines first. Setting this to "true" opts out of that — you pull
+# fraction of machines first. Setting this to "true" opts out of that - you pull
 # every update immediately and become an early tester. Security updates are never
 # phased, so they always install regardless of this setting.
 #   true  = always pull phased updates now (early-adopter)
@@ -81,7 +81,7 @@ update_system() {
         print_success "APT system update complete"
 
     else
-        print_error "No supported package manager found — skipping"
+        print_error "No supported package manager found - skipping"
         return 1
     fi
 }
@@ -89,7 +89,7 @@ update_system() {
 update_flatpak() {
     print_header "Flatpak"
     if ! command_exists flatpak; then
-        print_skip "Flatpak not installed — skipping"
+        print_skip "Flatpak not installed - skipping"
         return 0
     fi
 
@@ -105,7 +105,7 @@ update_snap() {
     print_header "Snap"
 
     if ! command_exists snap; then
-        print_skip "Snap not installed — skipping"
+        print_skip "Snap not installed - skipping"
         return 0
     fi
 
@@ -125,7 +125,7 @@ update_snap() {
 
 # ── Logo ───────────────────────────────────────────────────────────────────────
 
-# COSMIC logo accent colors — global scope so $'...' escapes work correctly
+# COSMIC logo accent colors - global scope so $'...' escapes work correctly
 TEAL=$'\033[38;2;78;205;196m'   # #4ecdc4  COSMIC teal
 ORG=$'\033[38;2;255;107;53m'    # #ff6b35  COSMIC orange
 
@@ -142,7 +142,7 @@ LOGO_ROWS=(
 
 # Per-column colours for the banner: a blue → green ramp interpolated in Oklab
 # rather than in sRGB. A naive RGB blend between #7aa2f7 and #9ece6a dips through
-# a desaturated grey at the midpoint — which lands right under "De", the most
+# a desaturated grey at the midpoint - which lands right under "De", the most
 # visible part of the word. Oklab is perceptually uniform, so the ramp stays
 # bright the whole way across and passes through cyan-teal instead.
 #
@@ -162,7 +162,7 @@ LOGO_GRAD=(
 
 # Draw the banner one character at a time, colouring by column index so the
 # gradient runs horizontally across the whole word. Every glyph gets the ramp,
-# including the box-drawing bevel characters (╔ ═ ╗ ║ ╚ ╝) — colouring those
+# including the box-drawing bevel characters (╔ ═ ╗ ║ ╚ ╝) - colouring those
 # separately puts stray marks inside the 0, the D bowl and the e, which reads
 # as noise sitting on top of the letters rather than as depth.
 print_logo() {
@@ -202,7 +202,7 @@ main() {
     start_time=$(date +%s)
 
     update_system || {
-        print_error "System package update failed — continuing with remaining tasks"
+        print_error "System package update failed - continuing with remaining tasks"
     }
 
     update_flatpak

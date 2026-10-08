@@ -1,4 +1,4 @@
-# Firefox — Cosmic Night
+# Firefox - Cosmic Night
 
 Firefox theme matching the COSMIC rice. Palette sampled directly from the
 wallpaper, [`cosmic-astronaut-firefox`](https://github.com/atraxsrc/cool-wallpapers/blob/main/cosmic/cosmic-astronaut-firefox-7168x4032.png)
@@ -17,7 +17,7 @@ wallpaper, [`cosmic-astronaut-firefox`](https://github.com/atraxsrc/cool-wallpap
 | `#e04c5d` | Loading, attention         | Under-suit red          |
 | `#3a3946` | Separators                 | Mech detail grey        |
 | `#7d8fae` | Muted text                 | Mid shadow              |
-| `#c3d0f5` | Body text                  | —                       |
+| `#c3d0f5` | Body text                  | -                       |
 
 ## Structure
 
@@ -42,7 +42,7 @@ firefox/
 
 Copies `chrome/` into your `*.default-release` profile, backs up anything it
 replaces, and adds the required pref to `user.js`. Then **fully restart**
-Firefox — `userChrome.css` is parsed only at startup.
+Firefox - `userChrome.css` is parsed only at startup.
 
 Manual equivalent:
 
@@ -63,9 +63,9 @@ cd theme && zip -r -X ../cosmic-night.zip . -x '.*'
 
 Then either:
 
-- **Temporary** — `about:debugging#/runtime/this-firefox` → Load Temporary
+- **Temporary** - `about:debugging#/runtime/this-firefox` → Load Temporary
   Add-on. Gone on restart.
-- **Permanent** — submit to [AMO](https://addons.mozilla.org/developers/) as
+- **Permanent** - submit to [AMO](https://addons.mozilla.org/developers/) as
   *On your own* (unlisted). Signing is automatic; download the signed `.xpi`
   and install via `about:addons` → gear → Install Add-on From File.
 
@@ -80,7 +80,7 @@ Things worth knowing before editing the CSS:
   read across the whole chrome; overriding them globally leaks into the toolbar
   and blanks the URL bar. Scope them to the popup elements.
 - **Popup borders need `::part(content)`.** Menus and panels render their shell
-  in shadow DOM — a plain `border` on the element lands on the inner box, so
+  in shadow DOM - a plain `border` on the element lands on the inner box, so
   you get two visible edges. This applies to context menus too.
 - **No `@namespace` declaration.** Modern Firefox builds urlbar results and
   panel rows from HTML; defaulting to the XUL namespace silently stops those
