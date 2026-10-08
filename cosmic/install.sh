@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copies the baseline COSMIC settings in cosmic/config/ (fonts, terminal look)
+# Copies the baseline COSMIC settings in cosmic/config/ (fonts, icons, terminal look)
 # into ~/.config/cosmic. The .ron theme and terminal scheme are still imported by hand, see README.
 #
 # Backs up every file it replaces to <file>.bak. COSMIC picks the changes up live.
@@ -18,6 +18,6 @@ done
 
 cat <<'EOF'
 
-Done. Needs the Maple fonts installed and the Tokyo Night terminal scheme
+Done. Needs the Maple fonts and Tokyonight icons installed, and the Tokyo Night terminal scheme
 imported, or COSMIC falls back to its defaults.
 EOF

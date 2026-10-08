@@ -39,7 +39,7 @@ and [`cosmic/`](https://github.com/atraxsrc/cool-wallpapers/tree/main/cosmic).
 │   └── TokyoNight.theme  # btop colour theme
 ├── cosmic
 │   ├── TokyoNight.ron    # COSMIC Appearance import
-│   ├── config/           # baseline settings: fonts, terminal look
+│   ├── config/           # baseline settings: fonts, icons, terminal look
 │   └── install.sh
 ├── cosmic-term
 │   └── TokyoNight-term.ron  # COSMIC Terminal colour scheme
@@ -87,16 +87,17 @@ dark. Export from Appearance if you tweak it so you do not lose the changes.
 ### Baseline settings
 
 `cosmic/config/` holds the settings that make up the look and rarely change
-(panel, dock, applets, shortcuts and icons are left out on purpose):
+(panel, dock, applets and shortcuts are left out on purpose):
 
 | Where | Setting |
 |-------|---------|
 | Fonts | Interface `Maple Normal UI`, monospace `Maple Mono Normal NFM` |
+| Icons | Tokyonight-Dark |
 | Windows | Minimize / maximize buttons hidden, theme applied to GNOME apps |
 | Terminal | Maple Mono 15 (weights 500 / bold 800 / dim 300), 77% opacity, no header bar, Tokyo Night |
 
-Install the [Maple fonts](https://github.com/subframe7536/maple-font) and
-import the terminal scheme (below) first, then:
+Install the [Maple fonts](https://github.com/subframe7536/maple-font) and the
+icons (see Icons below) and import the terminal scheme (below) first, then:
 
 ```bash
 ./cosmic/install.sh
@@ -202,6 +203,21 @@ cp btop/TokyoNight.theme ~/.config/btop/themes/
 
 ---
 
+## Icons
+
+Tokyonight-Dark from
+[Fausto-Korpsvart/Tokyonight-GTK-Theme](https://github.com/Fausto-Korpsvart/Tokyonight-GTK-Theme/tree/master/icons)
+(also in that folder: `-Dark-Cyan`, `-Moon`, `-Light`).
+
+```bash
+git clone --depth 1 https://github.com/Fausto-Korpsvart/Tokyonight-GTK-Theme.git
+mkdir -p ~/.local/share/icons
+cp -r Tokyonight-GTK-Theme/icons/Tokyonight-Dark ~/.local/share/icons/
+# Settings → Desktop → Appearance → Icons → Tokyonight-Dark
+```
+
+---
+
 ## Firefox
 
 **Cosmic Night**: a true-black Firefox theme whose palette is sampled from the
@@ -297,8 +313,8 @@ cd Pop_OS-Cosmic-TokyoNight
 ./fastfetch/install.sh
 mkdir -p ~/.config/btop/themes && cp btop/TokyoNight.theme ~/.config/btop/themes/
 
-# Maple fonts (https://github.com/subframe7536/maple-font), then
-# fonts + terminal look from cosmic/config/
+# icons (see Icons above) + Maple fonts (https://github.com/subframe7536/maple-font), then
+# fonts, icons, terminal look from cosmic/config/
 ./cosmic/install.sh
 
 # Firefox stylesheets (optional)
@@ -319,6 +335,7 @@ mkdir -p ~/.config/btop/themes && cp btop/TokyoNight.theme ~/.config/btop/themes
 | [zsh](https://www.zsh.org/) + [oh-my-zsh](https://ohmyz.sh/) | Shell |
 | [lsd](https://github.com/lsd-rs/lsd) | `ls` with icons and colours |
 | [btop](https://github.com/aristocratos/btop) | Resource monitor |
+| [Tokyonight icons](https://github.com/Fausto-Korpsvart/Tokyonight-GTK-Theme/tree/master/icons) | Icon pack |
 | [Firefox](https://www.mozilla.org/firefox/) | Browser, themed with Cosmic Night |
 
 ---
