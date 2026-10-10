@@ -84,6 +84,11 @@ Sets the Tokyo Night background (`#1a1b26`), container (`#24283b`), accent
 blue (`#7aa2f7`) and text tint. The rest of the palette is COSMIC's default
 dark. Export from Appearance if you tweak it so you do not lose the changes.
 
+Frosted glass is on in the `.ron` at `frosted: VeryLow` for windows, panel,
+applets and system UI (maximized apps stay solid), and corners are squared
+(`radius_*: 2.0`), the same as the DarkGold baseline. Adjust frosted glass on
+Appearance → Style → Frosted glass after import; those sliders survive a theme switch.
+
 ### Baseline settings
 
 `cosmic/config/` holds the settings that make up the look and rarely change
@@ -298,8 +303,8 @@ sudo nala update && sudo nala install fastfetch
 
 ```bash
 # Clone the repo
-git clone https://github.com/atraxsrc/Pop_OS-Cosmic-TokyoNight.git
-cd Pop_OS-Cosmic-TokyoNight
+git clone https://github.com/atraxsrc/cosmic-tokyonight-theme.git
+cd cosmic-tokyonight-theme
 
 # COSMIC theme
 # Settings → Appearance → Dark → Import cosmic/TokyoNight.ron

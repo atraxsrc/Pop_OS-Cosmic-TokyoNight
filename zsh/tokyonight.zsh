@@ -1,7 +1,7 @@
 # Tokyo Night zsh layer: colours, aliases, prompt.
 #
 # Source it at the END of your own ~/.zshrc, after oh-my-zsh.sh:
-#   source /path/to/Pop_OS-Cosmic-TokyoNight/zsh/tokyonight.zsh
+#   source /path/to/cosmic-tokyonight-theme/zsh/tokyonight.zsh
 #
 # Keep machine-specific or private lines (PATH, scaling, nvm, ...) in your
 # own ~/.zshrc, not here.
